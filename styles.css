@@ -1,232 +1,88 @@
 :root {
-    --primary-color: #00FF00;
-    --background-color: #222;
+    --primary-color: #7DCEA0; /* Soft avocado green */
+    --secondary-color: #5D6D7E; /* Space blue */
+    --tertiary-color: #BB8FCE; /* Space purple */
+    --background-color: #2C3E50; /* Deep space blue */
 }
 
 body {
     margin: 0;
     font-family: 'Courier New', monospace;
     background-color: var(--background-color);
+    background-image: url('/mnt/data/shot.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
     color: var(--primary-color);
     overflow-x: hidden;
 }
 
-#landing {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+.hovered-bg {
+    background-image: url('/mnt/data/starwars.gif') !important;
 }
 
-#about {
-    padding: 40px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+.contact-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
 }
 
-.profileImage {
-    width: 200px;
-    height: 200px;
-    background: url('path_to_your_image.jpg') no-repeat center;
-    background-size: cover;
-    border: 3px solid var(--primary-color);
-    border-radius: 50%;
-    animation: holographic 10s infinite;
-}
-
-@keyframes holographic {
-    0% {
-        filter: hue-rotate(0deg);
-    }
-    50% {
-        filter: hue-rotate(360deg);
-    }
-    100% {
-        filter: hue-rotate(0deg);
-    }
-}
-
-#bioDataContainer {
-    max-width: 600px;
+.contact-container h2 {
     text-align: center;
-    background-color: rgba(0, 255, 0, 0.1);
-    padding: 20px;
-    border: 2px dashed var(--primary-color);
-    border-radius: 5px;
-}
-
-#projects {
-    padding: 40px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-.project-card {
-    width: 80%;
-    max-width: 600px;
-    background-color: rgba(0, 255, 0, 0.1);
-    padding: 20px;
-    border: 2px dashed var(--primary-color);
-    border-radius: 5px;
-    transition: transform 0.3s, box-shadow 0.3s;
-    position: relative;
-    overflow: hidden;
-}
-
-.project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-#skills {
-    padding: 40px 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
-
-.skill {
-    display: inline-block;
-    background-color: rgba(0, 255, 0, 0.1);
-    border: 2px solid var(--primary-color);
-    padding: 20px;
-    font-size: 1.2rem;
-    position: relative;
-    transition: transform 0.3s;
-}
-
-.skill:hover {
-    transform: translateY(-10px);
-}
-
-.skill::before {
-    content: attr(data-number); 
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    font-size: 0.8rem;
-}
-
-#contact {
-    padding: 40px 0;
-    background-color: #333;
     color: var(--primary-color);
-    font-family: 'Courier New', monospace;
 }
 
-#contact h2 {
-    text-align: center;
-    margin-bottom: 20px;
+label {
+    display: block;
+    margin-top: 10px;
+    color: var(--primary-color);
 }
 
-#contact-form {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-input, textarea {
+input[type="text"], input[type="email"], textarea {
     width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
-    background-color: #222;
+    margin-top: 5px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    background-color: transparent;
     color: var(--primary-color);
-    border: 1px solid var(--primary-color);
-    font-family: 'Courier New', monospace;
-    resize: none;
 }
 
-input:focus, textarea:focus {
-    outline: none;
-    box-shadow: 0 0 5px var(--primary-color);
+input[type="submit"] {
+    display: block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--background-color);
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--secondary-color);
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    height: 100vh;
+    justify-content: center;
 }
 
 button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: var(--primary-color);
-    color: #333;
+    padding: 10px 20px;
     border: none;
+    background-color: var(--primary-color);
     cursor: pointer;
-    font-family: 'Courier New', monospace;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #009900; 
-    color: #222;
-}
-
-.glow-border {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 2px;
-    width: 100%;
-    background-color: var(--primary-color);
-    animation: glowAnimation 2s linear forwards;
-}
-
-@keyframes glowAnimation {
-    0% {
-        top: 0;
-        left: 0;
-        height: 2px;
-        width: 100%;
-    }
-    25% {
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 2px;
-    }
-    50% {
-        bottom: 0;
-        left: 0;
-        height: 2px;
-        width: 100%;
-    }
-    75% {
-        bottom: 0;
-        right: 0;
-        height: 100%;
-        width: 2px;
-    }
-    100% {
-        top: 0;
-        right: 0;
-        height: 2px;
-        width: 100%;
-    }
-}
-
-.glow-pulse {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    background-color: var(--primary-color);
-    opacity: 0.3;
-    border-radius: 50%;
-    animation: pulseEffect 1s ease-out;
-}
-
-@keyframes pulseEffect {
-    0% {
-        width: 0;
-        height: 0;
-    }
-    100% {
-        width: 200%;
-        height: 200%;
-        opacity: 0;
-    }
+    background-color: var(--secondary-color);
 }

@@ -3,61 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yashi Yadav's Digital Laboratory</title>
+    <title>Main Menu</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div id="landing">
-        <h1>Welcome to Yashi Yadav's Digital Lab.</h1>
-        <p id="loadingSequence">Initiating data sequence...</p>
-    </div>
-    <section id="about">
-        <div class="profileImage"></div>
-        <div id="bioDataContainer">
-            <h2>About Me</h2>
-            <p id="bioData">
-                A passionate computer scientist with experience in data research, ERP system enhancement, and software development. Proficient in various languages and platforms, with notable projects in cryptographic frameworks and data management systems.
-            </p>
-            <p>Email: yashiyadav0901@gmail.com</p>
-            <p>Phone: (260)-246-8543</p>
-            <a href="https://www.linkedin.com/in/yashiyadav/" target="_blank">LinkedIn Profile</a>
-        </div>
-    </section>
-    <section id="projects">
-        <h2>My Experiments</h2>
-        <!-- Project 1 -->
-        <div class="project-card">
-            <h3>Hybrid AES 256 Cryptographic Framework for IoMT Devices</h3>
-            <p>
-                Engineered Encoder and Decoder using AES 256 encryption in Python. Employed Image Steganography for advanced data encryption. Presented findings at the 2023 Research Symposium at Purdue University.
-            </p>
-        </div>
-        <!-- Project 2 -->
-        <div class="project-card">
-            <h3>Production, Data Management, Automation and Usability Prototype</h3>
-            <p>
-                Secured a $1K scholarship by co-developing a QR code scanning system for Intertech Product Inc. Led database integration with MongoDB and Sage 100 accounting software. Built a functional website for sponsors using React.js and Node.js.
-            </p>
-        </div>
-    </section>
-    <section id="skills">
-        <h2>Skills Matrix</h2>
-        <div class="skill" data-number="90">Java</div>
-        <div class="skill" data-number="90">SQL</div>
-        <div class="skill" data-number="95">Python</div>
-        <div class="skill" data-number="85">C++</div>
-        <div class="skill" data-number="90">JavaScript (React.js/Node.js)</div>
-        <!-- Add more skills as necessary -->
-    </section>
-    <section id="contact">
-        <h2>Contact Terminal</h2>
-        <form id="contact-form">
-            <input type="text" name="name" placeholder="Enter your name..." required>
-            <input type="email" name="email" placeholder="Enter your email..." required>
-            <textarea name="message" rows="5" placeholder="Enter your message..." required></textarea>
-            <button type="submit">Send Command</button>
-        </form>
-    </section>
+    <nav>
+        <button onmouseover="changeBackground()" onmouseout="resetBackground()" onclick="navigateTo('about.html')">About Me</button>
+        <button onmouseover="changeBackground()" onmouseout="resetBackground()" onclick="navigateTo('projects.html')">Projects</button>
+        <button onmouseover="changeBackground()" onmouseout="resetBackground()" onclick="navigateTo('contact.html')">Contact Me</button>
+    </nav>
 </body>
 </html>
