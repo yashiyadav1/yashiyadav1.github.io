@@ -9,7 +9,7 @@ body {
     margin: 0;
     font-family: 'Courier New', monospace;
     background-color: var(--background-color);
-    background-image: url('/mnt/data/shot.gif');
+    background-image: url('shot.gif');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -18,7 +18,28 @@ body {
 }
 
 .hovered-bg {
-    background-image: url('/mnt/data/starwars.gif') !important;
+    background-image: url('starwars.gif') !important;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    height: 100vh;
+    justify-content: center;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background-color: var(--primary-color);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: var(--secondary-color);
 }
 
 .contact-container {
@@ -66,23 +87,7 @@ input[type="submit"]:hover {
     background-color: var(--secondary-color);
 }
 
-nav {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    height: 100vh;
-    justify-content: center;
-}
-
-button {
-    padding: 10px 20px;
-    border: none;
-    background-color: var(--primary-color);
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: var(--secondary-color);
+p {
+    text-align: center;
+    color: var(--primary-color);
 }
