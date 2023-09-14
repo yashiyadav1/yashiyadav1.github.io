@@ -1,13 +1,15 @@
+/* Using 'Poppins' from Google Fonts for a modern look: https://fonts.googleapis.com/css2?family=Poppins */
+
 :root {
-    --primary-color: #7DCEA0; /* Soft avocado green */
-    --secondary-color: #5D6D7E; /* Space blue */
-    --tertiary-color: #BB8FCE; /* Space purple */
-    --background-color: #2C3E50; /* Deep space blue */
+    --primary-color: #7DCEA0; 
+    --secondary-color: #5D6D7E; 
+    --tertiary-color: #BB8FCE; 
+    --background-color: #2C3E50; 
 }
 
 body {
     margin: 0;
-    font-family: 'Courier New', monospace;
+    font-family: 'Poppins', sans-serif;
     background-color: var(--background-color);
     background-image: url('shot.gif');
     background-size: cover;
@@ -15,6 +17,7 @@ body {
     background-position: center center;
     color: var(--primary-color);
     overflow-x: hidden;
+    padding: 20px;
 }
 
 .hovered-bg {
@@ -31,15 +34,18 @@ nav {
 }
 
 button {
-    padding: 10px 20px;
+    padding: 15px 25px;
     border: none;
     background-color: var(--primary-color);
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 button:hover {
     background-color: var(--secondary-color);
+    transform: scale(1.05);
 }
 
 .contact-container {
@@ -53,11 +59,12 @@ button:hover {
 .contact-container h2 {
     text-align: center;
     color: var(--primary-color);
+    margin-bottom: 20px;
 }
 
 label {
     display: block;
-    margin-top: 10px;
+    margin-top: 15px;
     color: var(--primary-color);
 }
 
@@ -81,10 +88,12 @@ input[type="submit"] {
     cursor: pointer;
     color: var(--background-color);
     transition: background-color 0.3s;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 input[type="submit"]:hover {
     background-color: var(--secondary-color);
+    transform: scale(1.05);
 }
 
 p {
