@@ -1,0 +1,103 @@
+/* Base styles, typography, etc. */
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-image: url('../images/space-bg.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: #FFDAB9;  /* Light Peach */
+}
+
+/* Dark mode styles */
+
+body.dark-mode {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #f2f2f2;  /* Soft white for dark mode */
+}
+
+body.dark-mode .navbar-dark .navbar-nav .nav-link {
+    color: #eee;
+}
+
+body.dark-mode .navbar, body.dark-mode .navbar-brand, body.dark-mode .navbar-toggler {
+    background-color: #444 !important;
+}
+
+body.dark-mode .btn-light {
+    background-color: #fff;
+    color: #333;
+}
+
+body.dark-mode .about-section, body.dark-mode .education-projects-section, body.dark-mode .experience-section, body.dark-mode .skills-section, body.dark-mode .contact-section {
+    background-color: #444;
+    color: #eee;
+}
+
+body.dark-mode a {
+    color: #bbb;
+}
+
+/* Hero section */
+
+.hero-section {
+    position: relative;
+}
+
+.hero-section .overlay {
+    background-color: rgba(10, 24, 61, 0.85);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-section h1, .hero-section p {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Adding shadow for better readability */
+}
+
+/* About, Experience, Education & Projects, Skills, Contact sections */
+
+.about-section, 
+.experience-section, 
+.education-projects-section, 
+.skills-section, 
+.contact-section {
+    background-color: rgba(10, 24, 61, 0.85);
+    position: relative;
+}
+
+/* Navbar adjustments */
+
+.navbar-nav {
+    margin: 0 auto; /* Center aligning the navbar items */
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #20B2AA;  /* Teal */
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #FF6347;  /* Coral */
+    transform: scale(1.1);
+    transition: transform 0.3s;
+}
+
+/* General link adjustments */
+
+a {
+    color: #20B2AA;  /* Teal */
+}
+
+a:hover {
+    color: #FF6347;  /* Coral */
+    text-decoration: none;
+}
+
+/* Contact section adjustments */
+
+.contact-form:hover {
+    transform: scale(1.03);
+    transition: transform 0.3s;
+}

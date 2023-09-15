@@ -3,16 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Menu</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <title>Yashi Yadav | Portfolio</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/styles/main.css">
 </head>
 <body>
-    <nav>
-        <button onmouseover="changeBackground()" onmouseout="resetBackground()" onclick="navigateTo('about.html')"><img src="images_a.jpeg" alt="Bullet Point"> About Me</button>
-        <button onmouseover="changeBackground()" onmouseout="resetBackground()" onclick="navigateTo('projects.html')"><img src="images_a.jpeg" alt="Bullet Point"> Projects</button>
-        <button onmouseover="changeBackground()" onmouseout="resetBackground()" onclick="navigateTo('skills.html')"><img src="images_a.jpeg" alt="Bullet Point"> Skills</button>
-        <button onmouseover="changeBackground()" onmouseout="resetBackground()" onclick="navigateTo('contact.html')"><img src="images_a.jpeg" alt="Bullet Point"> Contact Me</button>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Yashi Yadav</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#journey">Journey Through the Stars</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#education-projects">Edu & Astro Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#tech-powers">Techno Force Powers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Send a Signal</a>
+                </li>
+            </ul>
+            <button id="darkModeToggle" class="btn btn-light ml-3">Dark Mode</button>
+        </div>
     </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section text-white text-center">
+        <div class="overlay"></div>
+        <div class="container">
+            <h1>Welcome to My Universe</h1>
+            <p>Exploring the Galaxies of Data Science & Software Engineering</p>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="about-section py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Profile Picture Placeholder -->
+                <div class="col-md-4">
+                    <img src="assets/images/profile.jpeg" alt="Yashi Yadav" class="img-fluid rounded-circle mb-3">
+                </div>
+                <div class="col-md-8">
+                    <h2>About The Galactic Explorer</h2>
+                    <p>
+                        Hello, Earthling! I'm Yashi Yadav, navigating through the vast universe of tech. My spaceship has Python engines and uses AI for navigation. When I'm not exploring new tech galaxies, I love to journey through the realms of Star Wars, space, and the Marvel universe. And yes, avocados are my space food!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Through the Stars (Experience) Section -->
+    <section id="journey" class="experience-section py-5">
+        <div class="container">
+            <h2>Journey Through the Stars</h2>
+            <div class="experience-item">
+                <h3>Graduate Research Assistant</h3>
+                <p><strong>Purdue University, Fort Wayne, IN</strong> - Sep 2023 - Present</p>
+                <ul>
+                    <li>Contributed to dataset creation, steganographic channel implementation, and performance evaluations, targeting leading academic journals for publication.</li>
+                    <li>Employed Python TensorFlow for neural network modeling, optimizing code for better memory and multi-core performance.</li>
+                    <li>Applied metrics like PSNR and SSIM to ensure imperceptibility and robustness against external attacks.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <h3>D365 Development Intern</h3>
+                <p><strong>Vera Bradley, Roanoke, IN</strong> - May 2022 - Aug 2022</p>
+                <ul>
+                    <li>Enhanced Microsoft Dynamics 365 by resolving ITR/Bugs backlogs, improving the overall ERP system.</li>
+                    <li>Designed Power Automate Flows for alerts on 24 critical Batch Jobs in D365, improving system responsiveness and error handling.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Edu & Astro Projects Section -->
+    <section id="education-projects" class="education-projects-section py-5">
+        <div class="container">
+            <h2>Edu & Astro Projects</h2>
+            <div class="education-item">
+                <h3>Master of Science in Computer Science</h3>
+                <p><strong>Purdue University, Fort Wayne, IN</strong> - Expected May 2024</p>
+            </div>
+            <div class="education-item">
+                <h3>Bachelor of Science in Computer Science</h3>
+                <p><strong>Purdue University, Fort Wayne, IN</strong> - May 2023</p>
+            </div>
+            <div class="project-item">
+                <h3>Hybrid AES 256 Cryptographic Framework for IoMT Devices</h3>
+                <p><strong>Purdue University, Fort Wayne, IN</strong> - Jan 2023 - Apr 2023</p>
+                <ul>
+                    <li>Engineered Encoder and Decoder using AES 256 encryption in Python.</li>
+                    <li>Employed Image Steganography for advanced data encryption.</li>
+                    <li>Presented findings at the 2023 Research Symposium at Purdue University.</li>
+                </ul>
+            </div>
+            <div class="project-item">
+                <h3>Production, Data Management, Automation and Usability Prototype</h3>
+                <p><strong>Purdue University, Fort Wayne, IN</strong> - Aug 2022 - Apr 2023</p>
+                <ul>
+                    <li>Secured a $1K scholarship by co-developing a QR code scanning system for Intertech Product Inc.</li>
+                    <li>Led database integration with MongoDB and Sage 100 accounting software, optimizing data storage and retrieval.</li>
+                    <li>Built a functional website for sponsors using React.js and Node.js, enabling efficient data exchange.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Techno Force Powers (Skills) Section -->
+    <section id="tech-powers" class="skills-section py-5">
+        <div class="container">
+            <h2>Techno Force Powers</h2>
+            <ul>
+                <li>Languages: Java, SQL, Python, C++, JavaScript (React.js/Node.js)</li>
+                <li>Platforms: Microsoft D365, Azure, Power Automate</li>
+                <li>Tools: Git, Linux, MongoDB</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Send a Signal (Contact) Section -->
+    <section id="contact" class="contact-section py-5">
+        <div class="container">
+            <h2>Send a Signal</h2>
+            <div class="contact-form mt-4">
+                <form action="https://formspree.io/f/xeqbzkob" method="POST" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- JS Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('darkModeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+        });
+    </script>
 </body>
 </html>
