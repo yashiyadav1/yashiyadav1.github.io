@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="assets/styles/main.css">
 </head>
 <body>
-    
+    <button id="menuToggle" class="hamburger">&#9776;</button>
     <nav class="left-navigation">
         <ul>
             <li data-section="about" class="nav-link">About</li>
@@ -218,87 +218,6 @@
         </div>
     </section>
 
-    <!-- JS Scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
-    <script>
-        document.getElementById('darkModeToggle').addEventListener('click', function() {
-            document.body.classList.toggle('dark-mode');
-        });
-    </script>
-     
-     <script>
-         AOS.init();
-     </script>
-     <script>
-         document.querySelectorAll('.project-card-container').forEach(container => {
-             const card = container.querySelector('.project-card');
-             card.addEventListener('click', function() {
-                 this.classList.toggle('flipped');
-             });
-             card.addEventListener('transitionend', function() {
-                 if (this.classList.contains('flipped')) {
-                     container.style.zIndex = '1000';
-                 } else {
-                     container.style.zIndex = '1';
-                 }
-             });
-         });
- 
-     </script>
-     <script>
-         document.addEventListener('DOMContentLoaded', function() {
-             const cards = document.querySelectorAll('.project-card .card-inner');
-             cards.forEach(card => {
-                 card.addEventListener('click', function() {
-                     if(this.style.transform === 'rotateY(180deg)') {
-                         this.style.transform = 'rotateY(0deg)';
-                     } else {
-                         this.style.transform = 'rotateY(180deg)';
-                     }
-                 });
-             });
-         });
- 
-     </script>
-     <!-- ... (rest of the HTML code) ... -->
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('main > section');
-            const navItems = document.querySelectorAll('.left-navigation li');
-
-            const handleScroll = () => {
-                let current = '';
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    if (pageYOffset >= (sectionTop - sectionHeight / 2)) {
-                        current = section.getAttribute('id');
-                    }
-                });
-                navItems.forEach(item => {
-                    item.classList.remove('active');
-                    if (item.getAttribute('data-section') === current) {
-                        item.classList.add('active');
-                    }
-                });
-            }
-
-            window.addEventListener('scroll', handleScroll);
-
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const targetSection = document.getElementById(link.getAttribute('data-section'));
-                    targetSection.scrollIntoView({ behavior: 'smooth' });
-                });
-            });
-        });
-    </script>
-
     <div id="clipboard-message">Copied to Clipboard!</div>
      <footer>
         <a href="https://www.linkedin.com/in/yashiyadav/" target="_blank">
@@ -310,6 +229,87 @@
         <img src="assets/images/call_logo.jpeg" alt="Phone" class="copy-icon" data-content="2602468543">
         <img src="assets/images/gmail_logo.png" alt="Gmail" class="copy-icon" data-content="yashiyadav0901@gmail.com">
     </footer>
+
+      <!-- JS Scripts -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+      <script>
+          document.getElementById('darkModeToggle').addEventListener('click', function() {
+              document.body.classList.toggle('dark-mode');
+          });
+      </script>
+       
+       <script>
+           AOS.init();
+       </script>
+       <script>
+           document.querySelectorAll('.project-card-container').forEach(container => {
+               const card = container.querySelector('.project-card');
+               card.addEventListener('click', function() {
+                   this.classList.toggle('flipped');
+               });
+               card.addEventListener('transitionend', function() {
+                   if (this.classList.contains('flipped')) {
+                       container.style.zIndex = '1000';
+                   } else {
+                       container.style.zIndex = '1';
+                   }
+               });
+           });
+   
+       </script>
+       <script>
+           document.addEventListener('DOMContentLoaded', function() {
+               const cards = document.querySelectorAll('.project-card .card-inner');
+               cards.forEach(card => {
+                   card.addEventListener('click', function() {
+                       if(this.style.transform === 'rotateY(180deg)') {
+                           this.style.transform = 'rotateY(0deg)';
+                       } else {
+                           this.style.transform = 'rotateY(180deg)';
+                       }
+                   });
+               });
+           });
+   
+       </script>
+       <!-- ... (rest of the HTML code) ... -->
+  
+      <script>
+          document.addEventListener('DOMContentLoaded', () => {
+              const sections = document.querySelectorAll('main > section');
+              const navItems = document.querySelectorAll('.left-navigation li');
+  
+              const handleScroll = () => {
+                  let current = '';
+                  sections.forEach(section => {
+                      const sectionTop = section.offsetTop;
+                      const sectionHeight = section.clientHeight;
+                      if (pageYOffset >= (sectionTop - sectionHeight / 2)) {
+                          current = section.getAttribute('id');
+                      }
+                  });
+                  navItems.forEach(item => {
+                      item.classList.remove('active');
+                      if (item.getAttribute('data-section') === current) {
+                          item.classList.add('active');
+                      }
+                  });
+              }
+  
+              window.addEventListener('scroll', handleScroll);
+  
+              const navLinks = document.querySelectorAll('.nav-link');
+              navLinks.forEach(link => {
+                  link.addEventListener('click', (e) => {
+                      e.preventDefault();
+                      const targetSection = document.getElementById(link.getAttribute('data-section'));
+                      targetSection.scrollIntoView({ behavior: 'smooth' });
+                  });
+              });
+          });
+      </script>
 
     <script>
          const copyIcons = document.querySelectorAll('.copy-icon');
@@ -328,6 +328,16 @@
                         }
                     });
                 });
+    </script>
+    <script>
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const nav = document.querySelector('.left-navigation');
+            if (nav.style.width === '0px' || !nav.style.width) {
+                nav.style.width = '150px';
+            } else {
+                nav.style.width = '0px';
+            }
+        });
     </script>
     
 </body>

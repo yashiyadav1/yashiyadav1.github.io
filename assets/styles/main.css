@@ -265,3 +265,56 @@ a:hover {
 .project-card.flipped {
     z-index: 2;
 }
+
+.hamburger {
+    display: none;  /* Initially, we don't want to show this on desktop */
+    background-color: rgba(10, 24, 61, 0.85);
+    border: none;
+    font-size: 30px;
+    color: #20B2AA;
+    cursor: pointer;
+    z-index: 1001; /* Ensure it's above the left navigation */
+    position: fixed;
+    top: 10px;
+    left: 10px;
+}
+
+
+@media only screen and (max-width: 768px) {
+    /* Show the hamburger menu */
+    .hamburger {
+        display: block;
+    }
+
+    /* Hide the left navigation by default */
+    .left-navigation {
+        width: 0;
+        overflow: hidden;
+        transition: width 0.5s;
+    }
+
+    /* Adjust the main content margin */
+    main {
+        margin-left: 0;
+    }
+
+    h1, h2, h3 {
+        font-size: 1.5em;
+    }
+
+    p, li {
+        font-size: 1em;
+    }
+
+    /* Adjust the footer icons */
+    footer img {
+        width: 20px;
+        height: auto;
+    }
+
+    /* Adjust the profile picture in the About section */
+    .profile-pic {
+        width: 80px;
+        height: 80px;
+    }
+}
