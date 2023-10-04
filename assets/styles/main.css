@@ -38,35 +38,50 @@ body.dark-mode a {
     color: #bbb;
 }
 
-/* Hero section */
 
-.hero-section {
-    position: relative;
-}
-
-.hero-section .overlay {
-    background-color: rgba(10, 24, 61, 0.85);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.hero-section h1, .hero-section p {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Adding shadow for better readability */
-}
 
 /* About, Experience, Education & Projects, Skills, Contact sections */
 
 .about-section, 
+.welcome-section,
 .experience-section, 
-.education-projects-section, 
-.skills-section, 
+.education-section, 
+.projects-section,
+.skills-section,
+.interests-section,
 .contact-section {
     background-color: rgba(10, 24, 61, 0.85);
     position: relative;
 }
+
+#welcome h1, #welcome h2 {   /* Adjust this depending on which header level you used */
+    font-size: 36px;  /* Adjust this value to your preference */
+}
+#welcome {
+    text-align: center;        /* Horizontally center the text */
+    display: flex;             /* Enable flexbox for this container */
+    align-items: center;       /* Vertically center content */
+    justify-content: center;   /* Horizontally center content (if needed) */
+    flex-direction: column;    /* Stack content vertically */
+    height: 100vh;  
+    font-size: 20px;           
+}
+
+.profile-pic {
+    width: 100px;  /* Adjust this to your desired size */
+    height: 100px; /* Adjust this to your desired size */
+    border-radius: 50%;  /* This makes the image a circle */
+}
+
+.about-header-wrapper {
+    display: flex;
+    flex-direction: column;  /* Stack children vertically */
+    align-items: left;     /* Center the items horizontally */
+    gap: 10px;               /* Add some vertical space between the image and the header */
+}
+
+
+
 
 /* Navbar adjustments */
 
@@ -84,6 +99,91 @@ body.dark-mode a {
     transition: transform 0.3s;
 }
 
+
+.banner {
+    height: 300px;
+}
+
+.left-navigation {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    height: 100vh;  /* Take up the full viewport height */
+    width: 200px;
+    background-color: rgba(10, 24, 61, 0.85);
+    overflow-y: auto;  /* Add a scrollbar if the content exceeds the height */
+    z-index: 1000;  /* Make sure the nav is always on top */
+}
+main {
+    margin-left: 200px;  /* Width of the navigation (200px) + a little extra space (10px) */
+    /*padding: 20px;  /* Optional: for some space around the content */
+}
+
+.left-navigation ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.left-navigation li {
+    font-size: 18px;  /* Increase the font size as per your preference */
+    padding: 15px;    /* Adjust padding to increase space between items */
+    cursor: pointer;
+}
+
+.left-navigation a {
+    text-decoration: none;  /* Remove underline from links */
+    color: inherit;         /* Use the color of the parent (li) */
+}
+
+.left-navigation li.active {
+    background-color: #333;
+}
+
+.code-format {
+    font-family: 'Courier New', monospace;
+    background-color: #1e1e1ed3;  /* Dark gray, like VSCode's default dark theme */
+    color: #46ff77df;  /* Light gray font color */
+    padding: 10px 15px;
+    border-radius: 3px;  /* Optional: to give rounded corners */
+    border: 1px solid #333;  /* Subtle border */
+    overflow-x: auto;  /* In case the code exceeds the container width, this will allow for horizontal scrolling */
+    white-space: pre;  /* This will respect whitespace and line breaks */
+}
+
+
+footer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    background-color: rgba(10, 24, 61, 0.85);
+}
+
+footer img {
+    width: 24px;  /* Adjust this value to your preference */
+    height: 24px; /* This ensures the images maintain their aspect ratio */
+    border-radius: 50%; 
+}
+
+
+.copy-icon {
+    cursor: pointer;
+}
+
+#clipboard-message {
+    position: fixed;
+    bottom: 10%;
+    left: 55vw;
+    transform: translateX(-50%);
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    border-radius: 5px;
+    display: none;
+}
+
+
 /* General link adjustments */
 
 a {
@@ -100,4 +200,68 @@ a:hover {
 .contact-form:hover {
     transform: scale(1.03);
     transition: transform 0.3s;
+}
+
+
+/* Project Card Styles */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap; /* This will allow cards to wrap to the next line */
+    justify-content: space-between; /* Distributes cards evenly */
+    position: relative;
+}
+
+.project-card {
+    width: calc(50% - 10px);  /* Take up half the width, minus a bit for margins */
+    flex: 0 1 calc(33.33% - 20px); /* Flex basis set to slightly less than one-third, considering margins */
+    margin: 20px; /* Adding some margin between cards */
+    position: relative;
+    perspective: 1000px;
+    z-index: 1000;
+    /*max-width: calc(33.33% - 20px); /* Slightly less than one-third of the container's width, accounting for any potential margins or paddings */
+    /*margin: 10px; /* Adding some margin between cards */
+    /*width: 100%; /* Set a width to the card */
+    /*max-width: 400px; /* Maximum width can be adjusted as per design needs */
+    /*margin: 20px auto; /* Centering the card and adding vertical margin */
+}
+
+.project-card-container:hover {
+    z-index: 1000;
+}
+
+#project-card-1 {
+    margin-bottom: 300px; /* Adjust this value as needed */
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    min-height: 200px; /* Setting a minimum height to ensure cards have consistent height */
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    backface-visibility: hidden;
+    color: #56b887;
+    background: rgba(82, 7, 147, 0.593); /* Similar background to other sections */
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.card-front {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+}
+
+.project-card.flipped {
+    z-index: 2;
 }
