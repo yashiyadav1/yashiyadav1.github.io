@@ -64,13 +64,13 @@ body.dark-mode a {
     justify-content: center;   /* Horizontally center content (if needed) */
     flex-direction: column;    /* Stack content vertically */
     height: 100vh;  
-    font-size: 20px;           
+    font-size: 1.25vw;           
 }
 
 .profile-pic {
-    width: 100px;  /* Adjust this to your desired size */
-    height: 100px; /* Adjust this to your desired size */
-    border-radius: 50%;  /* This makes the image a circle */
+    width: 10vw;  
+    height: 10vw;
+    border-radius: 50%;
 }
 
 .about-header-wrapper {
@@ -212,18 +212,27 @@ a:hover {
 }
 
 .project-card {
-    width: calc(50% - 10px);  /* Take up half the width, minus a bit for margins */
+    
+    font-size: 1.125vw;
+    width: calc(50% - 1vw);  /* Take up half the width, minus a bit for margins */
     flex: 0 1 calc(33.33% - 20px); /* Flex basis set to slightly less than one-third, considering margins */
-    margin: 20px; /* Adding some margin between cards */
+    margin: 1.5vw; /* Adding some margin between cards */
     position: relative;
     perspective: 1000px;
     z-index: 1000;
+    min-height: 20vw;
+    overflow: hidden;
     /*max-width: calc(33.33% - 20px); /* Slightly less than one-third of the container's width, accounting for any potential margins or paddings */
     /*margin: 10px; /* Adding some margin between cards */
     /*width: 100%; /* Set a width to the card */
     /*max-width: 400px; /* Maximum width can be adjusted as per design needs */
     /*margin: 20px auto; /* Centering the card and adding vertical margin */
 }
+
+.project-card::-webkit-scrollbar {
+    display: none; /* Hide scrollbar */
+}
+
 
 .project-card-container:hover {
     z-index: 1000;
@@ -242,7 +251,8 @@ a:hover {
     min-height: 200px; /* Setting a minimum height to ensure cards have consistent height */
 }
 
-.card-front, .card-back {
+.card-front {
+    font-size: 1vw;
     position: absolute;
     width: 100%;
     backface-visibility: hidden;
@@ -250,71 +260,85 @@ a:hover {
     background: rgba(82, 7, 147, 0.593); /* Similar background to other sections */
     padding: 20px;
     border-radius: 5px;
-}
-
-.card-front {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+
 .card-back {
+    overflow-y:scroll;
     transform: rotateY(180deg);
+    font-size: 1.125vw;
+    position: absolute;
+    width: 100%;
+    backface-visibility: hidden;
+    color: #56b887;
+    background: rgba(82, 7, 147, 0.593); /* Similar background to other sections */
+    padding: 20px;
+    border-radius: 5px;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer */
+}
+
+.card-back {
+    overflow-y: scroll !important;  /* Force vertical scrolling */
+    height: 100%;                   /* Ensure it takes up full height of the card */
+    position: relative;             /* Establish a positioning context */
+}
+
+
+/* Hide scrollbar for the back of the card across various browsers */
+.card-back::-webkit-scrollbar {
+    display: none;  /* Webkit browsers */
+}
+.card-back {
+    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer */
 }
 
 .project-card.flipped {
     z-index: 2;
 }
 
-.hamburger {
-    display: none;  /* Initially, we don't want to show this on desktop */
-    background-color: rgba(10, 24, 61, 0.85);
-    border: none;
-    font-size: 30px;
-    color: #20B2AA;
-    cursor: pointer;
-    z-index: 1001; /* Ensure it's above the left navigation */
-    position: fixed;
-    top: 10px;
-    left: 10px;
+/* Mobile devices */
+@media screen and (max-width: 600px) {
+    .card-front {
+        font-size: 0.9vw;
+        
+    }
+    .card-back {
+        font-size: 1.12vw;  /* Decrease this value to make the font size smaller */
+        padding: 15px;     /* Adjust padding to make content more compact */
+        /* Add any other style adjustments here */
+    }
+    
+}
+
+/* Tablets and small laptops */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+    .card-front {
+        font-size: 1.25vw;
+    }
+    .card-back {
+        font-size: 1.25vw;  /* Decrease this value to make the font size smaller */
+        padding: 15px;     /* Adjust padding to make content more compact */
+        /* Add any other style adjustments here */
+    }
+    
 }
 
 
-@media only screen and (max-width: 768px) {
-    /* Show the hamburger menu */
-    .hamburger {
-        display: block;
+/* Large laptops and desktops */
+@media screen and (min-width: 1025px) {
+    .card-front {
+        font-size: 1.5vw;
     }
-
-    /* Hide the left navigation by default */
-    .left-navigation {
-        width: 0;
-        overflow: hidden;
-        transition: width 0.5s;
+    .card-back {
+        font-size: 1.5vw;  /* Decrease this value to make the font size smaller */
+        padding: 15px;     /* Adjust padding to make content more compact */
+        /* Add any other style adjustments here */
     }
-
-    /* Adjust the main content margin */
-    main {
-        margin-left: 0;
-    }
-
-    h1, h2, h3 {
-        font-size: 1.5em;
-    }
-
-    p, li {
-        font-size: 1em;
-    }
-
-    /* Adjust the footer icons */
-    footer img {
-        width: 20px;
-        height: auto;
-    }
-
-    /* Adjust the profile picture in the About section */
-    .profile-pic {
-        width: 80px;
-        height: 80px;
-    }
+    
 }
+
