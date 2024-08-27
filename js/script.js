@@ -1,130 +1,185 @@
-// Initialize GSAP plugins
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+// GSAP and ScrollTrigger
+gsap.register
 
-// Smooth scrolling
-const scroller = new LocomotiveScroll({
-    el: document.querySelector('#smooth-content'),
-    smooth: true
+// GSAP and ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);
+
+// Custom cursor
+const cursor = document.querySelector('.cursor');
+const follower = document.querySelector('.cursor-follower');
+
+document.addEventListener('mousemove', (e) => {
+    gsap.to(cursor, {duration: 0.1, x: e.clientX, y: e.clientY});
+    gsap.to(follower, {duration: 0.3, x: e.clientX, y: e.clientY});
 });
 
-scroller.on('scroll', ScrollTrigger.update);
-
-ScrollTrigger.scrollerProxy('#smooth-content', {
-    scrollTop(value) {
-        return arguments.length ? scroller.scrollTo(value, 0, 0) : scroller.scroll.instance.scroll.y;
-    },
-    getBoundingClientRect() {
-        return {top: 0, left: 0, width: window.innerWidth, height: window.innerHeight};
-    }
-});
-
-// Navbar scroll effect
-ScrollTrigger.create({
-    start: 'top -80',
-    end: 99999,
-    toggleClass: {className: 'scrolled', targets: 'nav'}
-});
-
-// Vanta.js background
-VANTA.NET({
-    el: "#hero-canvas",
-    mouseControls: true,
-    touchControls: true,
-    gyroControls: false,
-    minHeight: 200.00,
-    minWidth: 200.00,
-    scale: 1.00,
-    scaleMobile: 1.00,
-    color: 0x3b28cc,
-    backgroundColor: 0x0c0c0c,
-    points: 20.00,
-    maxDistance: 30.00,
-    spacing: 15.00
+// Navbar animation
+gsap.from('nav', {
+    y: -100,
+    opacity: 0,
+    duration: 1,
+    ease: 'power3.out'
 });
 
 // Hero section animations
-gsap.from('.hero-title', {
-    duration: 1,
+gsap.from('.glitch', {
     y: 100,
     opacity: 0,
-    ease: 'power4.out',
-    delay: 0.5
+    duration: 1,
+    delay: 0.5,
+    ease: 'power3.out'
 });
 
-gsap.from('.hero-subtitle', {
-    duration: 1,
+gsap.from('.subtitle', {
     y: 100,
     opacity: 0,
-    ease: 'power4.out',
-    delay: 0.7
+    duration: 1,
+    delay: 0.7,
+    ease: 'power3.out'
 });
 
 gsap.from('.cta-button', {
-    duration: 1,
     y: 100,
     opacity: 0,
-    ease: 'power4.out',
-    delay: 0.9
+    duration: 1,
+    delay: 0.9,
+    ease: 'power3.out'
 });
 
-// Skill bar animations
-gsap.utils.toArray('.skill').forEach(skill => {
-    const fill = skill.querySelector('.skill-fill');
-    const percent = skill.querySelector('.skill-percent');
-    const targetWidth = Math.floor(Math.random() * 50) + 50; // Random width between 50% and 100%
-
-    gsap.to(fill, {
-        width: `${targetWidth}%`,
-        duration: 2,
-        ease: 'power2.out',
-        scrollTrigger: {
-            trigger: skill,
-            start: 'top 80%',
-            end: 'bottom 20%',
-            scrub: 1
-        }
-    });
-
-    gsap.to(percent, {
-        innerHTML: targetWidth,
-        duration: 2,
-        snap: { innerHTML: 1 },
-        scrollTrigger: {
-            trigger: skill,
-            start: 'top 80%',
-            end: 'bottom 20%',
-            scrub: 1
-        }
-    });
-});
-
-// Project card animations
-gsap.utils.toArray('.project-card').forEach((card, index) => {
-    gsap.from(card, {
+// Scroll animations
+gsap.utils.toArray('section').forEach(section => {
+    gsap.from(section, {
         y: 100,
         opacity: 0,
         duration: 1,
-        ease: 'power3.out',
         scrollTrigger: {
-            trigger: card,
-            start: 'top 80%'
-        },
-        delay: index * 0.2
+            trigger: section,
+            start: 'top 80%',
+            end: 'top 20%',
+            scrub: 1
+        }
+    });
+});
+
+// Project card hover effect
+const projectCards = document.querySelectorAll('.project-card');
+
+projectCards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        gsap.to(card, {scale: 1.05, duration: 0.3});
+    });
+
+    card.addEventListener('mouseleave', () => {
+        gsap.to(card, {scale: 1, duration: 0.3});
     });
 });
 
 // Form animations
-gsap.utils.toArray('.form-group').forEach((group, index) => {
-    gsap.from(group, {
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out',
+const formInputs = document.querySelectorAll('.form-group input, .form-group textarea');
+
+formInputs.forEach(input => {
+    input.addEventListener('focus', () => {
+        gsap.to(input.nextElementSibling, {y: -20, scale: 0.8, duration: 0.3});
+    });
+
+    input.addEventListener('blur', () => {
+        if (input.value === '') {
+            gsap.to(input.nextElementSibling, {y: 0, scale: 1, duration: 0.3});
+        }
+    });
+});
+
+// Smooth scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const target = document.querySelector(this.getAttribute('href'));
+        
+        gsap.to(window, {
+            duration: 1,
+            scrollTo: {y: target, offsetY: 50},
+            ease: 'power3.inOut'
+        });
+    });
+});
+
+// Parallax effect
+gsap.utils.toArray('.project-card').forEach(card => {
+    gsap.to(card, {
+        yPercent: -20,
+        ease: 'none',
         scrollTrigger: {
-            trigger: group,
-            start: 'top 80%'
-        },
-        delay: index * 0.1
+            trigger: card,
+            scrub: true
+        }
+    });
+});
+
+// Text scramble effect for section titles
+class TextScramble {
+    constructor(el) {
+        this.el = el;
+        this.chars = '!<>-_\\/[]{}—=+*^?#________';
+        this.update = this.update.bind(this);
+    }
+    setText(newText) {
+        const oldText = this.el.innerText;
+        const length = Math.max(oldText.length, newText.length);
+        const promise = new Promise((resolve) => this.resolve = resolve);
+        this.queue = [];
+        for (let i = 0; i < length; i++) {
+            const from = oldText[i] || '';
+            const to = newText[i] || '';
+            const start = Math.floor(Math.random() * 40);
+            const end = start + Math.floor(Math.random() * 40);
+            this.queue.push({ from, to, start, end });
+        }
+        cancelAnimationFrame(this.frameRequest);
+        this.frame = 0;
+        this.update();
+        return promise;
+    }
+    update() {
+        let output = '';
+        let complete = 0;
+        for (let i = 0, n = this.queue.length; i < n; i++) {
+            let { from, to, start, end, char } = this.queue[i];
+            if (this.frame >= end) {
+                complete++;
+                output += to;
+            } else if (this.frame >= start) {
+                if (!char || Math.random() < 0.28) {
+                    char = this.randomChar();
+                    this.queue[i].char = char;
+                }
+                output += `<span class="dud">${char}</span>`;
+            } else {
+                output += from;
+            }
+        }
+        this.el.innerHTML = output;
+        if (complete === this.queue.length) {
+            this.resolve();
+        } else {
+            this.frameRequest = requestAnimationFrame(this.update);
+            this.frame++;
+        }
+    }
+    randomChar() {
+        return this.chars[Math.floor(Math.random() * this.chars.length)];
+    }
+}
+
+// Apply text scramble effect to section titles
+document.querySelectorAll('.section-title').forEach(title => {
+    const fx = new TextScramble(title);
+    fx.setText(title.textContent);
+
+    ScrollTrigger.create({
+        trigger: title,
+        start: 'top 80%',
+        onEnter: () => fx.setText(title.textContent)
     });
 });
 
@@ -148,43 +203,5 @@ form.addEventListener('submit', function(e) {
         }
     }).catch(error => {
         alert('Oops! There was a problem sending your message.');
-    });
-});
-
-// Custom cursor
-const cursor = document.createElement('div');
-cursor.className = 'custom-cursor';
-document.body.appendChild(cursor);
-
-document.addEventListener('mousemove', e => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-});
-
-document.addEventListener('mousedown', () => cursor.classList.add('clicking'));
-document.addEventListener('mouseup', () => cursor.classList.remove('clicking'));
-
-// Magnetic effect on buttons
-gsap.utils.toArray('.cta-button, .project-link').forEach(button => {
-    button.addEventListener('mousemove', e => {
-        const rect = button.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        gsap.to(button, {
-            duration: 0.3,
-            x: (x - rect.width / 2) / rect.width * 50,
-            y: (y - rect.height / 2) / rect.height * 50,
-            ease: 'power2.out'
-        });
-    });
-
-    button.addEventListener('mouseleave', () => {
-        gsap.to(button, {
-            duration: 0.3,
-            x: 0,
-            y: 0,
-            ease: 'power2.out'
-        });
     });
 });
