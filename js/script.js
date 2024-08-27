@@ -13,17 +13,17 @@ themeToggle.addEventListener('click', () => {
 particlesJS('particles-js', {
     particles: {
         number: { value: 80, density: { enable: true, value_area: 800 } },
-        color: { value: "#00ff00" },
+        color: { value: ["#00ffaa", "#00c3ff", "#ffd700"] },
         shape: { type: "circle" },
-        opacity: { value: 0.5, random: false },
-        size: { value: 3, random: true },
-        line_linked: { enable: true, distance: 150, color: "#00ff00", opacity: 0.4, width: 1 },
-        move: { enable: true, speed: 6, direction: "none", random: false, straight: false, out_mode: "out", bounce: false }
+        opacity: { value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } },
+        size: { value: 3, random: true, anim: { enable: true, speed: 4, size_min: 0.3, sync: false } },
+        line_linked: { enable: true, distance: 150, color: "#00ffaa", opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 2, direction: "none", random: true, straight: false, out_mode: "out", bounce: false }
     },
     interactivity: {
         detect_on: "canvas",
-        events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" }, resize: true },
-        modes: { grab: { distance: 400, line_linked: { opacity: 1 } }, bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 }, repulse: { distance: 200, duration: 0.4 }, push: { particles_nb: 4 }, remove: { particles_nb: 2 } }
+        events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" }, resize: true },
+        modes: { grab: { distance: 140, line_linked: { opacity: 1 } }, push: { particles_nb: 4 } }
     },
     retina_detect: true
 });
@@ -32,15 +32,23 @@ particlesJS('particles-js', {
 gsap.registerPlugin(ScrollTrigger);
 
 const sections = gsap.utils.toArray('.section');
-sections.forEach((section) => {
-    gsap.to(section, {
-        scrollTrigger: {
-            trigger: section,
-            start: 'top 80%',
-            end: 'bottom 20%',
-            toggleClass: 'show',
-            once: true,
-        }
+sections.forEach((section, index) => {
+    const heading = section.querySelector('h2');
+    const content = section.querySelectorAll('.skill-item, .project-item');
+    
+    gsap.set(section, { opacity: 0, y: 100 });
+    gsap.set(heading, { opacity: 0, y: 50 });
+    gsap.set(content, { opacity: 0, y: 50, stagger: 0.2 });
+
+    ScrollTrigger.create({
+        trigger: section,
+        start: 'top 80%',
+        onEnter: () => {
+            gsap.to(section, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' });
+            gsap.to(heading, { opacity: 1, y: 0, duration: 1, delay: 0.2, ease: 'power3.out' });
+            gsap.to(content, { opacity: 1, y: 0, duration: 1, stagger: 0.1, delay: 0.4, ease: 'power3.out' });
+        },
+        once: true
     });
 });
 
@@ -50,59 +58,60 @@ skillItems.forEach((item) => {
     const progress = item.querySelector('.progress');
     const width = progress.style.width;
     progress.style.width = '0%';
-    gsap.to(progress, {
-        width: width,
-        duration: 1.5,
-        ease: 'power2.out',
-        scrollTrigger: {
-            trigger: item,
-            start: 'top 80%',
-        }
+    
+    ScrollTrigger.create({
+        trigger: item,
+        start: 'top 80%',
+        onEnter: () => {
+            gsap.to(progress, {
+                width: width,
+                duration: 1.5,
+                ease: 'power2.out'
+            });
+        },
+        once: true
     });
 });
 
-// Project carousel
-const carousel = document.querySelector('.carousel');
-const prevBtn = document.querySelector('.prev');
-const nextBtn = document.querySelector('.next');
-let currentIndex = 0;
-
-function showProject(index) {
-    const projects = carousel.querySelectorAll('.project-item');
-    projects.forEach((project, i) => {
-        project.style.transform = `translateX(${100 * (i - index)}%)`;
+// Smooth scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
     });
-}
-
-prevBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + 3) % 3;
-    showProject(currentIndex);
 });
-
-nextBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % 3;
-    showProject(currentIndex);
-});
-
-showProject(currentIndex);
 
 // LEGO scene
 const legoScene = new THREE.Scene();
 const legoCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const legoRenderer = new THREE.WebGLRenderer({ alpha: true });
+const legoRenderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
 legoRenderer.setSize(window.innerWidth, window.innerHeight / 2);
 document.getElementById('lego-container').appendChild(legoRenderer.domElement);
 
-const legoGeometry = new THREE.BoxGeometry(1, 0.5, 0.5);
-const legoMaterial = new THREE.MeshPhongMaterial({ color: 0xff0000 });
+const legoGeometries = [
+    new THREE.BoxGeometry(1, 0.5, 0.5),
+    new THREE.SphereGeometry(0.5, 32, 32),
+    new THREE.ConeGeometry(0.5, 1, 32)
+];
+
+const legoMaterials = [
+    new THREE.MeshPhongMaterial({ color: 0x00ffaa }),
+    new THREE.MeshPhongMaterial({ color: 0x00c3ff }),
+    new THREE.MeshPhongMaterial({ color: 0xffd700 })
+];
+
 const legoGroup = new THREE.Group();
 
-for (let i = 0; i < 50; i++) {
-    const lego = new THREE.Mesh(legoGeometry, legoMaterial);
+for (let i = 0; i < 100; i++) {
+    const geometry = legoGeometries[Math.floor(Math.random() * legoGeometries.length)];
+    const material = legoMaterials[Math.floor(Math.random() * legoMaterials.length)];
+    const lego = new THREE.Mesh(geometry, material);
     lego.position.set(
-        (Math.random() - 0.5) * 5,
-        (Math.random() - 0.5) * 5,
-        (Math.random() - 0.5) * 5
+        (Math.random() - 0.5) * 10,
+        (Math.random() - 0.5) * 10,
+        (Math.random() - 0.5) * 10
     );
     lego.rotation.set(
         Math.random() * Math.PI,
@@ -121,8 +130,12 @@ legoCamera.position.z = 5;
 
 function animateLego() {
     requestAnimationFrame(animateLego);
-    legoGroup.rotation.x += 0.005;
-    legoGroup.rotation.y += 0.005;
+    legoGroup.rotation.x += 0.001;
+    legoGroup.rotation.y += 0.002;
+    legoGroup.children.forEach(lego => {
+        lego.rotation.x += 0.01;
+        lego.rotation.y += 0.01;
+    });
     legoRenderer.render(legoScene, legoCamera);
 }
 animateLego();

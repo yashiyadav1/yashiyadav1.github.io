@@ -1,15 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
 :root {
-    --primary-color: #00ff00;
-    --background-color: #000000;
-    --text-color: #ffffff;
-}
-
-body.light-mode {
-    --primary-color: #008000;
-    --background-color: #ffffff;
-    --text-color: #000000;
+    --primary-color: #00ffaa;
+    --secondary-color: #00c3ff;
+    --background-color: #0a192f;
+    --text-color: #e6f1ff;
+    --accent-color: #ffd700;
 }
 
 body, html {
@@ -17,7 +13,7 @@ body, html {
     padding: 0;
     font-family: 'Orbitron', sans-serif;
     color: var(--text-color);
-    background-color: var(--background-color);
+    background: linear-gradient(135deg, var(--background-color), #1f4068);
     overflow-x: hidden;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -44,6 +40,10 @@ body, html {
     align-items: center;
     padding: 2rem;
     box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    margin: 2rem 0;
 }
 
 h1, h2 {
@@ -73,7 +73,7 @@ h1, h2 {
 }
 
 .skill-item {
-    background-color: rgba(0, 255, 0, 0.1);
+    background-color: rgba(0, 255, 170, 0.1);
     border: 1px solid var(--primary-color);
     padding: 1rem;
     border-radius: 10px;
@@ -81,7 +81,7 @@ h1, h2 {
 }
 
 .skill-item:hover {
-    background-color: rgba(0, 255, 0, 0.3);
+    background-color: rgba(0, 255, 170, 0.3);
     transform: scale(1.05);
 }
 
@@ -107,16 +107,17 @@ h1, h2 {
 }
 
 .project-item {
-    background-color: rgba(0, 255, 0, 0.1);
+    background-color: rgba(0, 255, 170, 0.1);
     border: 1px solid var(--primary-color);
     padding: 1.5rem;
     border-radius: 10px;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-item:hover {
-    background-color: rgba(0, 255, 0, 0.3);
-    transform: scale(1.02);
+    background-color: rgba(0, 255, 170, 0.3);
+    transform: translateY(-10px) rotateX(5deg) rotateY(-5deg);
+    box-shadow: 0 20px 30px rgba(0, 255, 170, 0.2);
 }
 
 .project-item h3 {
@@ -151,7 +152,9 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background: rgba(10, 25, 47, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 255, 170, 0.1);
     z-index: 1000;
     display: flex;
     justify-content: space-between;
@@ -175,11 +178,24 @@ nav ul li a {
     text-decoration: none;
     font-size: 1.2rem;
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-nav ul li a:hover {
-    color: var(--text-color);
-    text-shadow: 0 0 10px var(--primary-color);
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    transform: translateX(0);
 }
 
 #theme-toggle {
@@ -249,7 +265,7 @@ textarea {
     width: 100%;
     padding: 0.5rem;
     border: 1px solid var(--primary-color);
-    background-color: rgba(0, 255, 0, 0.1);
+    background-color: rgba(0, 255, 170, 0.1);
     color: var(--text-color);
     font-family: 'Orbitron', sans-serif;
 }
@@ -289,7 +305,7 @@ button[type="submit"]:hover {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(10, 25, 47, 0.9);
     color: var(--text-color);
     padding: 1rem;
     text-align: center;
