@@ -3,171 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yashi Yadav - AI/ML Explorer</title>
-    <meta name="description" content="Yashi Yadav's portfolio - AI/ML Engineer, Data Scientist, and Deep Learning Researcher">
+    <title>Yashi Yadav | AI/ML Innovator</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/10340bba18.js" crossorigin="anonymous"></script>
-    <link rel="canonical" href="https://yashiyadav.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
 </head>
 <body>
-    <nav>
+    <div id="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Initializing AI Interface...</div>
+        </div>
+    </div>
+
+    <nav id="nav">
         <div class="nav-content">
             <div class="logo">YY</div>
-            <ul>
-                <li><a href="#home">Home</a></li>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#interests">Interests</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <div id="particles-js"></div>
-    
-    <div class="content">
-        <section id="home" class="section">
-            <h1>Yashi Yadav</h1>
-            <p class="subtitle">AI/ML Engineer | Data Scientist | Deep Learning Researcher</p>
-            <div class="social-links">
-                <a href="https://github.com/yashiyadav" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/yashiyadav" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+    <main>
+        <section id="home">
+            <canvas id="hero-canvas"></canvas>
+            <div class="hero-content">
+                <h1 class="glitch" data-text="Yashi Yadav">Yashi Yadav</h1>
+                <p class="tagline">Pioneering the Future of AI/ML</p>
+                <a href="assets/files/Yadav_Yashi_resume.pdf" class="cta-button" download>
+                    <span>Download Resume</span>
+                    <i class="fas fa-download"></i>
+                </a>
             </div>
-            <a href="assets/files/Yadav_Yashi_resume.pdf" class="download-btn" download>Download Resume</a>
         </section>
 
-        <section id="skills" class="section">
-            <h2>Skills</h2>
-            <div class="skill-container">
-                <div class="skill-item">
-                    <h3>Python</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 90%;"></div>
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>As an AI/ML engineer and data scientist, I push the boundaries of what's possible in artificial intelligence and machine learning. My work combines cutting-edge research with practical applications, driving innovation in fields ranging from natural language processing to computer vision.</p>
+                        <div class="social-links">
+                            <a href="https://github.com/yashiyadav" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/yashiyadav" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                        </div>
                     </div>
-                </div>
-                <div class="skill-item">
-                    <h3>TensorFlow</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 85%;"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <h3>Deep Learning</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 80%;"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <h3>NLP</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 75%;"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <h3>Data Analytics</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 85%;"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <h3>Azure</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 70%;"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <h3>Docker</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 65%;"></div>
+                    <div class="about-image">
+                        <div class="image-glitch-effect"></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="projects" class="section">
-            <h2>Projects</h2>
-            <div class="project-container">
-                <div class="project-item">
-                    <h3>Hate Speech Detection on Social Media</h3>
-                    <ul>
-                        <li>Implemented and compared three models: CNN, GloVe-enhanced CNN, and fine-tuned BERT Transformer</li>
-                        <li>Achieved 93.50% accuracy with the BERT model in classifying hate speech</li>
-                        <li>Analyzed model performance, addressing overfitting and generalization challenges</li>
-                    </ul>
-                    <a href="https://github.com/AustinRobinson/NLP-Course-Project" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
-                </div>
-                <div class="project-item">
-                    <h3>ASL Recognition</h3>
-                    <ul>
-                        <li>Developed a deep learning model for American Sign Language recognition in live and uploaded videos</li>
-                        <li>Implemented computer vision techniques to detect and interpret hand gestures</li>
-                        <li>Created a user-friendly interface for real-time ASL translation</li>
-                    </ul>
-                    <a href="https://github.com/yashiyadav/ASL-Recognition" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
-                </div>
-                <div class="project-item">
-                    <h3>Adaptive Reading Companion (ARC)</h3>
-                    <ul>
-                        <li>Designed a Chrome extension to enable bionic reading for people with Meares Irlen syndrome</li>
-                        <li>Implemented features for font customization, background color changes, and focus mode</li>
-                        <li>Integrated text-to-speech functionality for enhanced accessibility</li>
-                    </ul>
-                    <a href="https://github.com/yashiyadav/ARC-Extension" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
-                </div>
-                <div class="project-item">
-                    <h3>Jerry: The Virtual Assistant</h3>
-                    <ul>
-                        <li>Created an AI-powered virtual assistant using ChatGPT's API for natural language processing</li>
-                        <li>Implemented voice recognition for user interaction and command processing</li>
-                        <li>Integrated Google's API for web search capabilities and information retrieval</li>
-                    </ul>
-                    <a href="https://github.com/yashiyadav/Jerry-Virtual-Assistant" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+        <section id="skills">
+            <div class="container">
+                <h2 class="section-title">Skills Matrix</h2>
+                <div class="skills-grid">
+                    <div class="skill-item" data-skill="Python">
+                        <div class="skill-icon"><i class="fab fa-python"></i></div>
+                        <div class="skill-name">Python</div>
+                        <div class="skill-level" style="--level: 90%"></div>
+                    </div>
+                    <div class="skill-item" data-skill="TensorFlow">
+                        <div class="skill-icon"><i class="fas fa-brain"></i></div>
+                        <div class="skill-name">TensorFlow</div>
+                        <div class="skill-level" style="--level: 85%"></div>
+                    </div>
+                    <div class="skill-item" data-skill="Deep Learning">
+                        <div class="skill-icon"><i class="fas fa-network-wired"></i></div>
+                        <div class="skill-name">Deep Learning</div>
+                        <div class="skill-level" style="--level: 80%"></div>
+                    </div>
+                    <div class="skill-item" data-skill="NLP">
+                        <div class="skill-icon"><i class="fas fa-language"></i></div>
+                        <div class="skill-name">NLP</div>
+                        <div class="skill-level" style="--level: 75%"></div>
+                    </div>
+                    <div class="skill-item" data-skill="Data Analytics">
+                        <div class="skill-icon"><i class="fas fa-chart-bar"></i></div>
+                        <div class="skill-name">Data Analytics</div>
+                        <div class="skill-level" style="--level: 85%"></div>
+                    </div>
+                    <div class="skill-item" data-skill="Azure">
+                        <div class="skill-icon"><i class="fab fa-microsoft"></i></div>
+                        <div class="skill-name">Azure</div>
+                        <div class="skill-level" style="--level: 70%"></div>
+                    </div>
+                    <div class="skill-item" data-skill="Docker">
+                        <div class="skill-icon"><i class="fab fa-docker"></i></div>
+                        <div class="skill-name">Docker</div>
+                        <div class="skill-level" style="--level: 65%"></div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="interests" class="section">
-            <h2>Interests</h2>
-            <p>Star Wars | Puzzles | LEGO | Detective Movies | Sherlock Holmes</p>
-            <div id="lego-container"></div>
+        <section id="projects">
+            <div class="container">
+                <h2 class="section-title">Project Showcase</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3>Hate Speech Detection AI</h3>
+                            <p>Developed an advanced NLP model achieving 93.50% accuracy in detecting hate speech on social media platforms.</p>
+                            <a href="https://github.com/AustinRobinson/NLP-Course-Project" class="project-link" target="_blank" rel="noopener noreferrer">Explore Project <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                        <div class="project-image" style="background-image: url('path/to/hate-speech-detection-image.jpg');"></div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3>ASL Recognition System</h3>
+                            <p>Created a real-time American Sign Language recognition system using deep learning and computer vision techniques.</p>
+                            <a href="https://github.com/yashiyadav/ASL-Recognition" class="project-link" target="_blank" rel="noopener noreferrer">Explore Project <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                        <div class="project-image" style="background-image: url('path/to/asl-recognition-image.jpg');"></div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3>Adaptive Reading Companion (ARC)</h3>
+                            <p>Engineered a Chrome extension utilizing AI to enhance reading experience for individuals with Meares-Irlen syndrome.</p>
+                            <a href="https://github.com/yashiyadav/ARC-Extension" class="project-link" target="_blank" rel="noopener noreferrer">Explore Project <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                        <div class="project-image" style="background-image: url('path/to/arc-extension-image.jpg');"></div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3>Jerry: AI Virtual Assistant</h3>
+                            <p>Developed an advanced AI-powered virtual assistant integrating natural language processing and voice recognition technologies.</p>
+                            <a href="https://github.com/yashiyadav/Jerry-Virtual-Assistant" class="project-link" target="_blank" rel="noopener noreferrer">Explore Project <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                        <div class="project-image" style="background-image: url('path/to/jerry-assistant-image.jpg');"></div>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section id="contact" class="section">
-            <h2>Contact Me</h2>
-            <form id="contact-form" action="https://formspree.io/f/mnnawppo" method="POST">
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="_replyto" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <button type="submit">Send Message</button>
-            </form>
-            <div id="form-status"></div>
-            <p class="privacy-note">Your personal information will be used solely for the purpose of responding to your message and will not be shared with third parties.</p>
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">Initiate Contact</h2>
+                <form id="contact-form" action="https://formspree.io/f/mnnawppo" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="name" required>
+                        <label for="name">Your Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="_replyto" required>
+                        <label for="_replyto">Your Email</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" required></textarea>
+                        <label for="message">Your Message</label>
+                    </div>
+                    <button type="submit" class="cta-button">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
         </section>
-    </div>
+    </main>
 
     <footer>
-        <p>&copy; 2024 Yashi Yadav. All rights reserved.</p>
+        <div class="container">
+            <p>&copy; 2024 Yashi Yadav. All rights reserved.</p>
+        </div>
     </footer>
 
-    <div id="cookie-banner" class="hidden">
-        <p>This website uses cookies to ensure you get the best experience on our website.</p>
-        <button id="accept-cookies">Accept</button>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

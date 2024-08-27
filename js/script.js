@@ -1,68 +1,23 @@
-// Particle.js setup
-particlesJS('particles-js', {
-    particles: {
-        number: { value: 50, density: { enable: true, value_area: 800 } },
-        color: { value: "#3b82f6" },
-        shape: { type: "circle" },
-        opacity: { value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } },
-        size: { value: 3, random: true, anim: { enable: true, speed: 4, size_min: 0.3, sync: false } },
-        line_linked: { enable: true, distance: 150, color: "#3b82f6", opacity: 0.4, width: 1 },
-        move: { enable: true, speed: 1, direction: "none", random: true, straight: false, out_mode: "out", bounce: false }
-    },
-    interactivity: {
-        detect_on: "canvas",
-        events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" }, resize: true },
-        modes: { grab: { distance: 140, line_linked: { opacity: 1 } }, push: { particles_nb: 4 } }
-    },
-    retina_detect: true
+// Loader
+window.addEventListener('load', () => {
+    const loader = document.getElementById('loader');
+    loader.style.opacity = '0';
+    setTimeout(() => {
+        loader.style.display = 'none';
+    }, 500);
 });
 
-// GSAP animations
-gsap.registerPlugin(ScrollTrigger);
-
-const sections = gsap.utils.toArray('.section');
-sections.forEach((section, index) => {
-    const heading = section.querySelector('h2');
-    const content = section.querySelectorAll('.skill-item, .project-item');
-    
-    gsap.set(section, { opacity: 0, y: 50 });
-    gsap.set(heading, { opacity: 0, y: 20 });
-    gsap.set(content, { opacity: 0, y: 20, stagger: 0.1 });
-
-    ScrollTrigger.create({
-        trigger: section,
-        start: 'top 80%',
-        onEnter: () => {
-            gsap.to(section, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' });
-            gsap.to(heading, { opacity: 1, y: 0, duration: 0.8, delay: 0.2, ease: 'power3.out' });
-            gsap.to(content, { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, delay: 0.4, ease: 'power3.out' });
-        },
-        once: true
-    });
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+    } else {
+        nav.classList.remove('scrolled');
+    }
 });
 
-// Skill progress bars animation
-const skillItems = document.querySelectorAll('.skill-item');
-skillItems.forEach((item) => {
-    const progress = item.querySelector('.progress');
-    const width = progress.style.width;
-    progress.style.width = '0%';
-    
-    ScrollTrigger.create({
-        trigger: item,
-        start: 'top 80%',
-        onEnter: () => {
-            gsap.to(progress, {
-                width: width,
-                duration: 1.5,
-                ease: 'power2.out'
-            });
-        },
-        once: true
-    });
-});
-
-// Smooth scrolling
+// Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -72,107 +27,90 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// LEGO scene
-const legoScene = new THREE.Scene();
-const legoCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const legoRenderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-legoRenderer.setSize(window.innerWidth, window.innerHeight / 2);
-document.getElementById('lego-container').appendChild(legoRenderer.domElement);
+// Three.js background animation
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('hero-canvas'), alpha: true });
 
-const legoGeometries = [
-    new THREE.BoxGeometry(1, 0.5, 0.5),
-    new THREE.SphereGeometry(0.5, 32, 32),
-    new THREE.ConeGeometry(0.5, 1, 32)
-];
+renderer.setSize(window.innerWidth, window.innerHeight);
 
-const legoMaterials = [
-    new THREE.MeshPhongMaterial({ color: 0x3b82f6 }),
-    new THREE.MeshPhongMaterial({ color: 0x10b981 }),
-    new THREE.MeshPhongMaterial({ color: 0xf472b6 })
-];
+const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
+const material = new THREE.MeshBasicMaterial({ color: 0x00f5d4, wireframe: true });
+const torus = new THREE.Mesh(geometry, material);
 
-const legoGroup = new THREE.Group();
+scene.add(torus);
 
-for (let i = 0; i < 100; i++) {
-    const geometry = legoGeometries[Math.floor(Math.random() * legoGeometries.length)];
-    const material = legoMaterials[Math.floor(Math.random() * legoMaterials.length)];
-    const lego = new THREE.Mesh(geometry, material);
-    lego.position.set(
-        (Math.random() - 0.5) * 10,
-        (Math.random() - 0.5) * 10,
-        (Math.random() - 0.5) * 10
-    );
-    lego.rotation.set(
-        Math.random() * Math.PI,
-        Math.random() * Math.PI,
-        Math.random() * Math.PI
-    );
-    legoGroup.add(lego);
+camera.position.z = 30;
+
+function animate() {
+    requestAnimationFrame(animate);
+
+    torus.rotation.x += 0.01;
+    torus.rotation.y += 0.005;
+    torus.rotation.z += 0.01;
+
+    renderer.render(scene, camera);
 }
 
-const legoLight = new THREE.PointLight(0xffffff, 1, 100);
-legoLight.position.set(0, 0, 10);
-legoScene.add(legoLight);
-
-legoScene.add(legoGroup);
-legoCamera.position.z = 5;
-
-function animateLego() {
-    requestAnimationFrame(animateLego);
-    legoGroup.rotation.x += 0.001;
-    legoGroup.rotation.y += 0.002;
-    legoGroup.children.forEach(lego => {
-        lego.rotation.x += 0.01;
-        lego.rotation.y += 0.01;
-    });
-    legoRenderer.render(legoScene, legoCamera);
-}
-animateLego();
-
-// Contact form handling
-const form = document.getElementById('contact-form');
-const formStatus = document.getElementById('form-status');
-
-form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const formData = new FormData(form);
-    const xhr = new XMLHttpRequest();
-    
-    xhr.open(form.method, form.action);
-    xhr.setRequestHeader('Accept', 'application/json');
-    
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState !== XMLHttpRequest.DONE) return;
-        
-        if (xhr.status === 200) {
-            form.reset();
-            formStatus.innerHTML = 'Thanks for your message! I\'ll get back to you soon.';
-        } else {
-            formStatus.innerHTML = 'Oops! There was a problem sending your message. Please try again.';
-        }
-    };
-    
-    xhr.send(formData);
-});
-
-// Cookie consent
-const cookieBanner = document.getElementById('cookie-banner');
-const acceptCookies = document.getElementById('accept-cookies');
-
-if (!localStorage.getItem('cookiesAccepted')) {
-    cookieBanner.classList.remove('hidden');
-}
-
-acceptCookies.addEventListener('click', () => {
-    localStorage.setItem('cookiesAccepted', 'true');
-    cookieBanner.classList.add('hidden');
-});
+animate();
 
 // Resize handler
-window.addEventListener('resize', onWindowResize, false);
-function onWindowResize() {
-    legoCamera.aspect = window.innerWidth / window.innerHeight;
-    legoCamera.updateProjectionMatrix();
-    legoRenderer.setSize(window.innerWidth, window.innerHeight / 2);
-}
+window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+// GSAP Animations
+gsap.registerPlugin(ScrollTrigger);
+
+// Animate skill levels
+gsap.utils.toArray('.skill-level').forEach(level => {
+    gsap.to(level, {
+        width: level.dataset.level,
+        duration: 1.5,
+        ease: 'power2.out',
+        scrollTrigger: {
+            trigger: level,
+            start: 'top 80%',
+        }
+    });
+});
+
+// Animate project cards
+gsap.utils.toArray('.project-card').forEach((card, index) => {
+    gsap.from(card, {
+        y: 100,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+            trigger: card,
+            start: 'top 80%',
+        },
+        delay: index * 0.2
+    });
+});
+
+// Form submission
+const form = document.getElementById('contact-form');
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(form);
+    fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+    }).then(response => {
+        if (response.ok) {
+            form.reset();
+            alert('Message sent successfully!');
+        } else {
+            alert('Oops! There was a problem sending your message.');
+        }
+    }).catch(error => {
+        alert('Oops! There was a problem sending your message.');
+    });
+});
