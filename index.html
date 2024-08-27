@@ -3,342 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yashi Yadav | Portfolio</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/styles/main.css">
+    <title>Yashi Yadav - AI/ML Explorer</title>
+    <meta name="description" content="Yashi Yadav's portfolio - AI/ML Engineer, Data Scientist, and Deep Learning Researcher">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://kit.fontawesome.com/10340bba18.js" crossorigin="anonymous"></script>
+    <link rel="canonical" href="https://yashiyadav.com">
 </head>
 <body>
-    <button id="menuToggle" class="hamburger">&#9776;</button>
-    <nav class="left-navigation">
+    <nav>
         <ul>
-            <li data-section="about" class="nav-link">About</li>
-            <li data-section="education" class="nav-link">Education</li>
-            <li data-section="journey" class="nav-link">Experience</li>
-            <li data-section="projects" class="nav-link">Projects</li>
-            <li data-section="tech-powers" class="nav-link">Skills</li>
-            <!-- <li data-section="interests" class="nav-link">Interests & Hobbies</li> -->
-            <li><a href="assets/files/yashi_yadav_resume.pdf" target="_blank">Resume</a></li>
-            <li data-section="contact" class="nav-link">Contact</li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#interests">Interests</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
+        <button id="theme-toggle" aria-label="Toggle dark/light mode">
+            <i class="fas fa-moon"></i>
+        </button>
     </nav>
 
-    <main>
-        <!-- <div class="banner" style="background-color: #594153;"></div> -->
-
-    <section id="welcome" class="welcome-section py-5">
-        <div class="container">
-            <h1>Welcome to my website</h1>
-            <p>
-                Hi, I am Yashi Yadav, and this is my Portfolio. <br>
-                It contains all my projects, relevant work experience, skills, and involvement in the CS community.<br>
-                This is an evergrowing page with new projects to come! <br>
-                Feel free to reach out to me if you have any questions by going to the contact section!
-            </p>
-        </div>
-    </section>
-
-
-    <!-- About Section -->
-    <section id="about" class="about-section py-5">
-        <div class="container">
-            <div class="about-header-wrapper">
-                <img src="assets/images/profile.jpeg" alt="Yashi's Profile Photo" class="profile-pic">
-                <h1>About</h1>
-            </div>
-            <pre class="code-format">
-                class Yashi {
-
-                    university = "Purdue University, Fort Wayne";
-                    major = "Computer Science";
-                    degree = "Master of Science";
-                    graduation = December 2024;
-                    characteristics = ["Hardworking","Nerd", "Sarcastic", "Team Player"];
-                    passion = "Fumbling with my code";
-                    <!-- aspirations = "Your aspirations here"; -->
-                }
-            </pre>
-        </div>
-    </section>
-
-    <section id="education" class="education-section py-5">
-        <div class="container">
-            <h2>Education</h2>
-            <div class="education-item">
-                <h3>Master of Science in Computer Science</h3>
-                <p><strong>Purdue University, Fort Wayne, IN</strong> - December 2024</p>
-            </div>
-            <div class="education-item">
-                <h3>Bachelor of Science in Computer Science</h3>
-                <p><strong>Purdue University, Fort Wayne, IN</strong> - May 2023</p>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Journey Through the Stars (Experience) Section -->
-    <section id="journey" class="experience-section py-5">
-        <div class="container">
-            <h2>Experience</h2>
-            <div class="experience-item">
-                <h3>Graduate Research Assistant</h3>
-                <p><strong>Purdue University, Fort Wayne, IN</strong> - Sep 2023 - Present</p>
-                <ul>
-                    <li>Contributed to dataset creation, steganographic channel implementation, and performance evaluations, targeting leading academic journals for publication.</li>
-                    <li>Employed Python TensorFlow for neural network modeling, optimizing code for better memory and multi-core performance.</li>
-                    <li>Applied metrics like PSNR and SSIM to ensure imperceptibility and robustness against external attacks.</li>
-                </ul>
-            </div>
-            <div class="experience-item">
-                <h3>D365 Development Intern</h3>
-                <p><strong>Vera Bradley, Roanoke, IN</strong> - May 2022 - Aug 2022</p>
-                <ul>
-                    <li>Enhanced Microsoft Dynamics 365 by resolving ITR/Bugs backlogs, improving the overall ERP system.</li>
-                    <li>Designed Power Automate Flows for alerts on 24 critical Batch Jobs in D365, improving system responsiveness and error handling.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-  
-    <section id="projects" class="projects-section py-5">
-        <div class="container">
-            <h2>Projects</h2>
-        
-            <div class="cards-container">
-                <div class="project-card">
-                    <div class="card-inner">
-                        <div class="card-front">
-                            <h3>Adaptive Reading Companion(ARC)</h3>
-                        </div>
-                        <div class="card-back">
-                            <ul>
-                                <li>Creating a chrome extension which enables people with Meares Irlen syndrome to read at a faster pace by
-                                    enabling bionic reading.</li>
-                                <li>Features: Text to speech,font customization, changing background color, enabling focus
-                                    mode, line spacing, vocabulary assistance, Note taking.</li>
-                            </ul>
-                        </div>
-                    </div>
-            </div>
-
-            <div class="project-card">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <h3>Jerry: The Virtual Assistant</h3>
-                    </div>
-                    <div class="card-back">
-                        <p><strong>Purdue University, Fort Wayne, IN</strong></p>
-                        <ul>
-                            <li>Engineered Encoder and Decoder using AES 256 encryption in Python.</li>
-                            <li>Employed Image Steganography for advanced data encryption.</li>
-                            <li>Presented findings at the 2023 Research Symposium at Purdue University.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <h3>Hybrid AES 256 Cryptographic Framework for IoMT Devices</h3>
-                    </div>
-                    <div class="card-back">
-                        <p><strong>Purdue University, Fort Wayne, IN</strong></p>
-                        <ul>
-                            <li>Engineered Encoder and Decoder using AES 256 encryption in Python.</li>
-                            <li>Employed Image Steganography for advanced data encryption.</li>
-                            <li>Presented findings at the 2023 Research Symposium at Purdue University.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        
-            <div class="project-card">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <h3>Production, Data Management, Automation and Usability Prototype</h3>
-                    </div>
-                    <div class="card-back">
-                        <p><strong>Purdue University, Fort Wayne, IN</strong></p>
-                        <ul>
-                            <li>Secured a $1K scholarship by co-developing a QR code scanning system for Intertech Product Inc.</li>
-                            <li>Led database integration with MongoDB and Sage 100 accounting software, optimizing data storage and retrieval.</li>
-                            <li>Built a functional website for sponsors using React.js and Node.js, enabling efficient data exchange.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Techno Force Powers (Skills) Section -->
-    <section id="tech-powers" class="skills-section py-5">
-        <div class="container">
-            <h2>Skills</h2>
-            <ul>
-                <li>Languages: Java, SQL, Python, C++, JavaScript (React.js/Node.js)</li>
-                <li>Platforms: Microsoft D365, Azure, Power Automate</li>
-                <li>Tools: Git, Linux, MongoDB</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- <section id="interests" class="interests-section py-5">
-        <div class="container">
-            <h1>Interests & Hobbies</h1>
-            <ul>
-                <li>Interest 1</li>
-                <li>Interest 2</li>
-                <li>Interest 3</li>
-        </div>
-    </section> -->
-
-    <!-- Send a Signal (Contact) Section -->
-    <section id="contact" class="contact-section py-5">
-        <div class="container">
-            <h2>Send a Signal</h2>
-            <div class="contact-form mt-4">
-                <form action="https://formspree.io/f/xeqbzkob" method="POST" id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <div id="clipboard-message">Copied to Clipboard!</div>
-     <footer>
-        <a href="https://www.linkedin.com/in/yashiyadav/" target="_blank">
-            <img src="assets/images/LinkedIn_logo.png" alt="LinkedIn">
-        </a>
-        <a href="https://github.com/yashiyadav1" target="_blank">
-            <img src="assets/images/gitHub_logo.png" alt="GitHub">
-        </a>
-        <img src="assets/images/call_logo.jpeg" alt="Phone" class="copy-icon" data-content="2602468543">
-        <img src="assets/images/gmail_logo.png" alt="Gmail" class="copy-icon" data-content="yashiyadav0901@gmail.com">
-    </footer>
-
-      <!-- JS Scripts -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-      <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
-      <script>
-          document.getElementById('darkModeToggle').addEventListener('click', function() {
-              document.body.classList.toggle('dark-mode');
-          });
-      </script>
-       
-       <script>
-           AOS.init();
-       </script>
-       <script>
-           document.querySelectorAll('.project-card-container').forEach(container => {
-               const card = container.querySelector('.project-card');
-               card.addEventListener('click', function() {
-                   this.classList.toggle('flipped');
-               });
-               card.addEventListener('transitionend', function() {
-                   if (this.classList.contains('flipped')) {
-                       container.style.zIndex = '1000';
-                   } else {
-                       container.style.zIndex = '1';
-                   }
-               });
-           });
-   
-       </script>
-       <script>
-           document.addEventListener('DOMContentLoaded', function() {
-               const cards = document.querySelectorAll('.project-card .card-inner');
-               cards.forEach(card => {
-                   card.addEventListener('click', function() {
-                       if(this.style.transform === 'rotateY(180deg)') {
-                           this.style.transform = 'rotateY(0deg)';
-                       } else {
-                           this.style.transform = 'rotateY(180deg)';
-                       }
-                   });
-               });
-           });
-   
-       </script>
-       <!-- ... (rest of the HTML code) ... -->
-  
-      <script>
-          document.addEventListener('DOMContentLoaded', () => {
-              const sections = document.querySelectorAll('main > section');
-              const navItems = document.querySelectorAll('.left-navigation li');
-  
-              const handleScroll = () => {
-                  let current = '';
-                  sections.forEach(section => {
-                      const sectionTop = section.offsetTop;
-                      const sectionHeight = section.clientHeight;
-                      if (pageYOffset >= (sectionTop - sectionHeight / 2)) {
-                          current = section.getAttribute('id');
-                      }
-                  });
-                  navItems.forEach(item => {
-                      item.classList.remove('active');
-                      if (item.getAttribute('data-section') === current) {
-                          item.classList.add('active');
-                      }
-                  });
-              }
-  
-              window.addEventListener('scroll', handleScroll);
-  
-              const navLinks = document.querySelectorAll('.nav-link');
-              navLinks.forEach(link => {
-                  link.addEventListener('click', (e) => {
-                      e.preventDefault();
-                      const targetSection = document.getElementById(link.getAttribute('data-section'));
-                      targetSection.scrollIntoView({ behavior: 'smooth' });
-                  });
-              });
-          });
-      </script>
-
-    <script>
-         const copyIcons = document.querySelectorAll('.copy-icon');
-                copyIcons.forEach(icon => {
-                    icon.addEventListener('click', async () => {
-                        const content = icon.getAttribute('data-content');
-                        try {
-                            await navigator.clipboard.writeText(content);
-                            const clipboardMsg = document.getElementById('clipboard-message');
-                            clipboardMsg.style.display = 'block';
-                            setTimeout(() => {
-                                clipboardMsg.style.display = 'none';
-                            }, 1500);
-                        } catch (err) {
-                            console.error('Failed to copy!', err);
-                        }
-                    });
-                });
-    </script>
-    <script>
-        document.getElementById('menuToggle').addEventListener('click', function() {
-            const nav = document.querySelector('.left-navigation');
-            if (nav.style.width === '0px' || !nav.style.width) {
-                nav.style.width = '150px';
-            } else {
-                nav.style.width = '0px';
-            }
-        });
-    </script>
+    <div id="particles-js"></div>
     
+    <div class="content">
+        <section id="home" class="section hidden">
+            <h1>Yashi Yadav</h1>
+            <p>AI/ML Engineer | Data Scientist | Deep Learning Researcher</p>
+            <div class="social-links">
+                <a href="https://github.com/yashiyadav" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/yashiyadav" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <a href="assets/files/Yadav_Yashi_resume.pdf" download class="download-btn">Download Resume</a>
+        </section>
+
+        <section id="skills" class="section hidden">
+            <h2>Skills</h2>
+            <div class="skill-container">
+                <div class="skill-item">
+                    <h3>Python</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <h3>TensorFlow</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <h3>Deep Learning</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 80%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <h3>NLP</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 75%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <h3>Data Analytics</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <h3>Azure</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 70%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <h3>Docker</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 65%;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section hidden">
+            <h2>Projects</h2>
+            <div class="carousel">
+                <div class="project-item">
+                    <h3>ASL Recognition</h3>
+                    <p>Deep learning model for American Sign Language recognition</p>
+                </div>
+                <div class="project-item">
+                    <h3>Adaptive Reading Companion</h3>
+                    <p>Chrome extension for bionic reading</p>
+                </div>
+                <div class="project-item">
+                    <h3>Jerry: The Virtual Assistant</h3>
+                    <p>AI-powered virtual assistant using ChatGPT's API</p>
+                </div>
+            </div>
+            <button class="carousel-btn prev" aria-label="Previous project"><i class="fas fa-chevron-left"></i></button>
+            <button class="carousel-btn next" aria-label="Next project"><i class="fas fa-chevron-right"></i></button>
+        </section>
+
+        <section id="interests" class="section hidden">
+            <h2>Interests</h2>
+            <p>Star Wars | Puzzles | LEGO | Detective Movies | Sherlock Holmes</p>
+            <div id="lego-container"></div>
+        </section>
+
+        <section id="contact" class="section hidden">
+            <h2>Contact Me</h2>
+            <form id="contact-form" action="https://formspree.io/f/mnnawppo" method="POST">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="_replyto" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
+            <div id="form-status"></div>
+            <p class="privacy-note">Your personal information will be used solely for the purpose of responding to your message and will not be shared with third parties.</p>
+        </section>
+    </div>
+
+    <div id="cookie-banner" class="hidden">
+        <p>This website uses cookies to ensure you get the best experience on our website.</p>
+        <button id="accept-cookies">Accept</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
