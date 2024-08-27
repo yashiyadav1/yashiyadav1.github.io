@@ -6,37 +6,38 @@
     <title>Yashi Yadav - AI/ML Explorer</title>
     <meta name="description" content="Yashi Yadav's portfolio - AI/ML Engineer, Data Scientist, and Deep Learning Researcher">
     <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/10340bba18.js" crossorigin="anonymous"></script>
     <link rel="canonical" href="https://yashiyadav.com">
 </head>
 <body>
     <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#interests">Interests</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <button id="theme-toggle" aria-label="Toggle dark/light mode">
-            <i class="fas fa-moon"></i>
-        </button>
+        <div class="nav-content">
+            <div class="logo">YY</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#interests">Interests</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
     </nav>
 
     <div id="particles-js"></div>
     
     <div class="content">
-        <section id="home" class="section hidden">
+        <section id="home" class="section">
             <h1>Yashi Yadav</h1>
-            <p>AI/ML Engineer | Data Scientist | Deep Learning Researcher</p>
+            <p class="subtitle">AI/ML Engineer | Data Scientist | Deep Learning Researcher</p>
             <div class="social-links">
                 <a href="https://github.com/yashiyadav" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
                 <a href="https://www.linkedin.com/in/yashiyadav" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
             </div>
-            <a href="assets/files/Yadav_Yashi_resume.pdf" class="download-btn" download="">Download Resume</a>
+            <a href="assets/files/Yadav_Yashi_resume.pdf" class="download-btn" download>Download Resume</a>
         </section>
 
-        <section id="skills" class="section hidden">
+        <section id="skills" class="section">
             <h2>Skills</h2>
             <div class="skill-container">
                 <div class="skill-item">
@@ -84,7 +85,7 @@
             </div>
         </section>
 
-        <section id="projects" class="section hidden">
+        <section id="projects" class="section">
             <h2>Projects</h2>
             <div class="project-container">
                 <div class="project-item">
@@ -126,13 +127,13 @@
             </div>
         </section>
 
-        <section id="interests" class="section hidden">
+        <section id="interests" class="section">
             <h2>Interests</h2>
             <p>Star Wars | Puzzles | LEGO | Detective Movies | Sherlock Holmes</p>
             <div id="lego-container"></div>
         </section>
 
-        <section id="contact" class="section hidden">
+        <section id="contact" class="section">
             <h2>Contact Me</h2>
             <form id="contact-form" action="https://formspree.io/f/mnnawppo" method="POST">
                 <div class="form-group">
@@ -153,6 +154,10 @@
             <p class="privacy-note">Your personal information will be used solely for the purpose of responding to your message and will not be shared with third parties.</p>
         </section>
     </div>
+
+    <footer>
+        <p>&copy; 2024 Yashi Yadav. All rights reserved.</p>
+    </footer>
 
     <div id="cookie-banner" class="hidden">
         <p>This website uses cookies to ensure you get the best experience on our website.</p>

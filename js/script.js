@@ -1,24 +1,13 @@
-// Theme toggle
-const themeToggle = document.getElementById('theme-toggle');
-const body = document.body;
-
-themeToggle.addEventListener('click', () => {
-    body.classList.toggle('light-mode');
-    const icon = themeToggle.querySelector('i');
-    icon.classList.toggle('fa-moon');
-    icon.classList.toggle('fa-sun');
-});
-
 // Particle.js setup
 particlesJS('particles-js', {
     particles: {
-        number: { value: 80, density: { enable: true, value_area: 800 } },
-        color: { value: ["#00ffaa", "#00c3ff", "#ffd700"] },
+        number: { value: 50, density: { enable: true, value_area: 800 } },
+        color: { value: "#3b82f6" },
         shape: { type: "circle" },
         opacity: { value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } },
         size: { value: 3, random: true, anim: { enable: true, speed: 4, size_min: 0.3, sync: false } },
-        line_linked: { enable: true, distance: 150, color: "#00ffaa", opacity: 0.4, width: 1 },
-        move: { enable: true, speed: 2, direction: "none", random: true, straight: false, out_mode: "out", bounce: false }
+        line_linked: { enable: true, distance: 150, color: "#3b82f6", opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 1, direction: "none", random: true, straight: false, out_mode: "out", bounce: false }
     },
     interactivity: {
         detect_on: "canvas",
@@ -36,17 +25,17 @@ sections.forEach((section, index) => {
     const heading = section.querySelector('h2');
     const content = section.querySelectorAll('.skill-item, .project-item');
     
-    gsap.set(section, { opacity: 0, y: 100 });
-    gsap.set(heading, { opacity: 0, y: 50 });
-    gsap.set(content, { opacity: 0, y: 50, stagger: 0.2 });
+    gsap.set(section, { opacity: 0, y: 50 });
+    gsap.set(heading, { opacity: 0, y: 20 });
+    gsap.set(content, { opacity: 0, y: 20, stagger: 0.1 });
 
     ScrollTrigger.create({
         trigger: section,
         start: 'top 80%',
         onEnter: () => {
-            gsap.to(section, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' });
-            gsap.to(heading, { opacity: 1, y: 0, duration: 1, delay: 0.2, ease: 'power3.out' });
-            gsap.to(content, { opacity: 1, y: 0, duration: 1, stagger: 0.1, delay: 0.4, ease: 'power3.out' });
+            gsap.to(section, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' });
+            gsap.to(heading, { opacity: 1, y: 0, duration: 0.8, delay: 0.2, ease: 'power3.out' });
+            gsap.to(content, { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, delay: 0.4, ease: 'power3.out' });
         },
         once: true
     });
@@ -97,9 +86,9 @@ const legoGeometries = [
 ];
 
 const legoMaterials = [
-    new THREE.MeshPhongMaterial({ color: 0x00ffaa }),
-    new THREE.MeshPhongMaterial({ color: 0x00c3ff }),
-    new THREE.MeshPhongMaterial({ color: 0xffd700 })
+    new THREE.MeshPhongMaterial({ color: 0x3b82f6 }),
+    new THREE.MeshPhongMaterial({ color: 0x10b981 }),
+    new THREE.MeshPhongMaterial({ color: 0xf472b6 })
 ];
 
 const legoGroup = new THREE.Group();
