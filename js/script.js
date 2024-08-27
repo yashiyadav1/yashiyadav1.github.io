@@ -1,83 +1,104 @@
-// Loader
-window.addEventListener('load', () => {
-    const loader = document.getElementById('loader');
-    loader.style.opacity = '0';
-    setTimeout(() => {
-        loader.style.display = 'none';
-    }, 500);
+// Initialize GSAP plugins
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+// Smooth scrolling
+const scroller = new LocomotiveScroll({
+    el: document.querySelector('#smooth-content'),
+    smooth: true
 });
 
-// Navbar scroll effect
-window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    if (window.scrollY > 50) {
-        nav.classList.add('scrolled');
-    } else {
-        nav.classList.remove('scrolled');
+scroller.on('scroll', ScrollTrigger.update);
+
+ScrollTrigger.scrollerProxy('#smooth-content', {
+    scrollTop(value) {
+        return arguments.length ? scroller.scrollTo(value, 0, 0) : scroller.scroll.instance.scroll.y;
+    },
+    getBoundingClientRect() {
+        return {top: 0, left: 0, width: window.innerWidth, height: window.innerHeight};
     }
 });
 
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
+// Navbar scroll effect
+ScrollTrigger.create({
+    start: 'top -80',
+    end: 99999,
+    toggleClass: {className: 'scrolled', targets: 'nav'}
 });
 
-// Three.js background animation
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('hero-canvas'), alpha: true });
-
-renderer.setSize(window.innerWidth, window.innerHeight);
-
-const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
-const material = new THREE.MeshBasicMaterial({ color: 0x00f5d4, wireframe: true });
-const torus = new THREE.Mesh(geometry, material);
-
-scene.add(torus);
-
-camera.position.z = 30;
-
-function animate() {
-    requestAnimationFrame(animate);
-
-    torus.rotation.x += 0.01;
-    torus.rotation.y += 0.005;
-    torus.rotation.z += 0.01;
-
-    renderer.render(scene, camera);
-}
-
-animate();
-
-// Resize handler
-window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+// Vanta.js background
+VANTA.NET({
+    el: "#hero-canvas",
+    mouseControls: true,
+    touchControls: true,
+    gyroControls: false,
+    minHeight: 200.00,
+    minWidth: 200.00,
+    scale: 1.00,
+    scaleMobile: 1.00,
+    color: 0x3b28cc,
+    backgroundColor: 0x0c0c0c,
+    points: 20.00,
+    maxDistance: 30.00,
+    spacing: 15.00
 });
 
-// GSAP Animations
-gsap.registerPlugin(ScrollTrigger);
+// Hero section animations
+gsap.from('.hero-title', {
+    duration: 1,
+    y: 100,
+    opacity: 0,
+    ease: 'power4.out',
+    delay: 0.5
+});
 
-// Animate skill levels
-gsap.utils.toArray('.skill-level').forEach(level => {
-    gsap.to(level, {
-        width: level.dataset.level,
-        duration: 1.5,
+gsap.from('.hero-subtitle', {
+    duration: 1,
+    y: 100,
+    opacity: 0,
+    ease: 'power4.out',
+    delay: 0.7
+});
+
+gsap.from('.cta-button', {
+    duration: 1,
+    y: 100,
+    opacity: 0,
+    ease: 'power4.out',
+    delay: 0.9
+});
+
+// Skill bar animations
+gsap.utils.toArray('.skill').forEach(skill => {
+    const fill = skill.querySelector('.skill-fill');
+    const percent = skill.querySelector('.skill-percent');
+    const targetWidth = Math.floor(Math.random() * 50) + 50; // Random width between 50% and 100%
+
+    gsap.to(fill, {
+        width: `${targetWidth}%`,
+        duration: 2,
         ease: 'power2.out',
         scrollTrigger: {
-            trigger: level,
+            trigger: skill,
             start: 'top 80%',
+            end: 'bottom 20%',
+            scrub: 1
+        }
+    });
+
+    gsap.to(percent, {
+        innerHTML: targetWidth,
+        duration: 2,
+        snap: { innerHTML: 1 },
+        scrollTrigger: {
+            trigger: skill,
+            start: 'top 80%',
+            end: 'bottom 20%',
+            scrub: 1
         }
     });
 });
 
-// Animate project cards
+// Project card animations
 gsap.utils.toArray('.project-card').forEach((card, index) => {
     gsap.from(card, {
         y: 100,
@@ -86,9 +107,24 @@ gsap.utils.toArray('.project-card').forEach((card, index) => {
         ease: 'power3.out',
         scrollTrigger: {
             trigger: card,
-            start: 'top 80%',
+            start: 'top 80%'
         },
         delay: index * 0.2
+    });
+});
+
+// Form animations
+gsap.utils.toArray('.form-group').forEach((group, index) => {
+    gsap.from(group, {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+            trigger: group,
+            start: 'top 80%'
+        },
+        delay: index * 0.1
     });
 });
 
@@ -112,5 +148,43 @@ form.addEventListener('submit', function(e) {
         }
     }).catch(error => {
         alert('Oops! There was a problem sending your message.');
+    });
+});
+
+// Custom cursor
+const cursor = document.createElement('div');
+cursor.className = 'custom-cursor';
+document.body.appendChild(cursor);
+
+document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+});
+
+document.addEventListener('mousedown', () => cursor.classList.add('clicking'));
+document.addEventListener('mouseup', () => cursor.classList.remove('clicking'));
+
+// Magnetic effect on buttons
+gsap.utils.toArray('.cta-button, .project-link').forEach(button => {
+    button.addEventListener('mousemove', e => {
+        const rect = button.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        gsap.to(button, {
+            duration: 0.3,
+            x: (x - rect.width / 2) / rect.width * 50,
+            y: (y - rect.height / 2) / rect.height * 50,
+            ease: 'power2.out'
+        });
+    });
+
+    button.addEventListener('mouseleave', () => {
+        gsap.to(button, {
+            duration: 0.3,
+            x: 0,
+            y: 0,
+            ease: 'power2.out'
+        });
     });
 });
